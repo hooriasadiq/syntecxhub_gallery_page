@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Modern Gallery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<h1>✨ Image Gallery</h1>
+
+<!-- Filter Buttons -->
+<div class="filters">
+  <button onclick="filterImages('all')">All</button>
+  <button onclick="filterImages('nature')">Nature</button>
+  <button onclick="filterImages('tech')">Tech</button>
+</div>
+
+<!-- Gallery -->
+<div class="gallery">
+
+  <div class="image nature">
+    <img src="https://picsum.photos/300?1" onclick="openLightbox(this.src)">
+    <span>Nature</span>
+  </div>
+
+  <div class="image tech">
+    <img src="https://picsum.photos/300?2" onclick="openLightbox(this.src)">
+    <span>Tech</span>
+  </div>
+
+  <div class="image nature">
+    <img src="https://picsum.photos/300?3" onclick="openLightbox(this.src)">
+    <span>Nature</span>
+  </div>
+
+  <div class="image tech">
+    <img src="https://picsum.photos/300?4" onclick="openLightbox(this.src)">
+    <span>Tech</span>
+  </div>
+
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img">
+</div>
+
+<script>
+    // Filter Images
+function filterImages(category) {
+  let images = document.querySelectorAll(".image");
+
+  images.forEach(img => {
+    if (category === "all" || img.classList.contains(category)) {
+      img.style.display = "block";
+    } else {
+      img.style.display = "none";
+    }
+  });
+}
+
+// Lightbox
+function openLightbox(src) {
+  document.getElementById("lightbox").style.display = "flex";
+  document.getElementById("lightbox-img").src = src;
+}
+
+function closeLightbox() {
+  document.getElementById("lightbox").style.display = "none";
+}
+</script>
+</body>
+</html>
